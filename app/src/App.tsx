@@ -28,6 +28,12 @@ function App() {
     setText("");
   };
 
+  const toggle = (id: string) => {
+    setTodos((prev) =>
+      prev.map((t) => (t.id === id ? { ...t, done: !t.done } : t))
+    );
+  };
+
   return (
     <main style={{ maxWidth: 560, margin: "40px auto", padding: 16 }}>
       <h1>ToDo</h1>
@@ -67,7 +73,11 @@ function App() {
             }}
           >
             {/* todo:チェック機能 */}
-            <input type="checkbox" checked={t.done} readOnly />
+            <input
+              type="checkbox"
+              checked={t.done}
+              onChange={() => toggle(t.id)}
+            />
             <span
               style={{
                 flex: 1,
