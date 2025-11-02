@@ -1,8 +1,19 @@
 import { useState } from "react";
 import "./App.css";
 
+type Todo = {
+  id: string;
+  title: string;
+  done: boolean;
+};
+
 function App() {
   const [text, setText] = useState("");
+  const [todos, setTodos] = useState<Todo[]>([
+    { id: "t1", title: "Reactの環境を整える", done: true },
+    { id: "t2", title: "入力フォームを作る", done: false },
+  ]);
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
@@ -33,6 +44,37 @@ function App() {
       <p style={{ marginTop: 8, color: "#666" }}>
         入力中: <strong>{text || "（未入力）"}</strong>
       </p>
+
+      <ul style={{ listStyle: "none", padding: 0, marginTop: 24 }}>
+        {todos.length === 0 && (
+          <li style={{ color: "#666" }}>まだ何もありません。</li>
+        )}
+        {todos.map((t) => (
+          <li
+            key={t.id}
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: 8,
+              padding: "8px 0",
+              borderBottom: "1px solid #eee",
+            }}
+          >
+            {/* todo:チェック機能 */}
+            <input type="checkbox" checked={t.done} readOnly />
+            <span
+              style={{
+                flex: 1,
+                textDecoration: t.done ? "line-through" : "none",
+              }}
+            >
+              {t.title}
+            </span>
+            {/* todo:削除機能 */}
+            <button disabled>削除</button>
+          </li>
+        ))}
+      </ul>
     </main>
   );
 }
