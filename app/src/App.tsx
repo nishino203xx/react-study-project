@@ -9,16 +9,22 @@ type Todo = {
 
 function App() {
   const [text, setText] = useState("");
-  const [todos, setTodos] = useState<Todo[]>([
-    { id: "t1", title: "Reactの環境を整える", done: true },
-    { id: "t2", title: "入力フォームを作る", done: false },
-  ]);
+  const [todos, setTodos] = useState<Todo[]>([]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
     const title = text.trim();
     if (!title) return;
+
+    const newTodo: Todo = {
+      id: crypto.randomUUID(),
+      title: title,
+      done: false,
+    };
+
+    setTodos((prev) => [...prev, newTodo]);
+
     setText("");
   };
 
