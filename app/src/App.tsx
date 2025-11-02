@@ -3,12 +3,18 @@ import "./App.css";
 
 function App() {
   const [text, setText] = useState("");
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+  };
 
   return (
     <main style={{ maxWidth: 560, margin: "40px auto", padding: 16 }}>
       <h1>ToDo</h1>
 
-      <form style={{ display: "flex", gap: 8, marginTop: 16 }}>
+      <form
+        onSubmit={handleSubmit}
+        style={{ display: "flex", gap: 8, marginTop: 16 }}
+      >
         <input
           value={text}
           onChange={(e) => setText(e.target.value)}
