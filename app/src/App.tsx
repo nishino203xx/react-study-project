@@ -56,11 +56,6 @@ function App() {
         <button type="submit">追加</button>
       </form>
 
-      {/* 入力プレビュー（後で削除） */}
-      <p style={{ marginTop: 8, color: "#666" }}>
-        入力中: <strong>{text || "（未入力）"}</strong>
-      </p>
-
       <ul style={{ listStyle: "none", padding: 0, marginTop: 24 }}>
         {todos.length === 0 && (
           <li style={{ color: "#666" }}>まだ何もありません。</li>
