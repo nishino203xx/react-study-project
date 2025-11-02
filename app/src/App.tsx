@@ -34,6 +34,10 @@ function App() {
     );
   };
 
+  const remove = (id: string) => {
+    setTodos((prev) => prev.filter((t) => t.id !== id));
+  };
+
   return (
     <main style={{ maxWidth: 560, margin: "40px auto", padding: 16 }}>
       <h1>ToDo</h1>
@@ -72,7 +76,6 @@ function App() {
               borderBottom: "1px solid #eee",
             }}
           >
-            {/* todo:チェック機能 */}
             <input
               type="checkbox"
               checked={t.done}
@@ -86,8 +89,13 @@ function App() {
             >
               {t.title}
             </span>
-            {/* todo:削除機能 */}
-            <button disabled>削除</button>
+            <button
+              onClick={() => {
+                if (confirm(`「${t.title}」を削除しますか？`)) remove(t.id);
+              }}
+            >
+              削除
+            </button>
           </li>
         ))}
       </ul>
