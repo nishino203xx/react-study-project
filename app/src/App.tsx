@@ -1,35 +1,30 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from "react";
+import "./App.css";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [text, setText] = useState("");
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
+    <main style={{ maxWidth: 560, margin: "40px auto", padding: 16 }}>
+      <h1>ToDo</h1>
+
+      <form style={{ display: "flex", gap: 8, marginTop: 16 }}>
+        <input
+          value={text}
+          onChange={(e) => setText(e.target.value)}
+          placeholder="やることを入力"
+          aria-label="新規ToDo"
+          style={{ flex: 1, padding: 8 }}
+        />
+        <button type="submit">追加</button>
+      </form>
+
+      {/* 入力プレビュー（後で削除） */}
+      <p style={{ marginTop: 8, color: "#666" }}>
+        入力中: <strong>{text || "（未入力）"}</strong>
       </p>
-    </>
-  )
+    </main>
+  );
 }
 
-export default App
+export default App;
