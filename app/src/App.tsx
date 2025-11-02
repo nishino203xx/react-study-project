@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 
 type Todo = {
@@ -7,9 +7,22 @@ type Todo = {
   done: boolean;
 };
 
+const STORAGE_KEY = "react-todo.todos.v1";
+
 function App() {
   const [text, setText] = useState("");
-  const [todos, setTodos] = useState<Todo[]>([]);
+  const [todos, setTodos] = useState<Todo[]>(() => {
+    const saved = localStorage.getItem(STORAGE_KEY);
+    if (!saved) return [];
+
+    try {
+      const parsed = JSON.parse(saved);
+      return Array.isArray(parsed) ? parsed : [];
+    } catch (err) {
+      console.error("データの復元に失敗しました。", err);
+      return [];
+    }
+  });
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -37,6 +50,14 @@ function App() {
   const remove = (id: string) => {
     setTodos((prev) => prev.filter((t) => t.id !== id));
   };
+
+  useEffect(() => {
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(todos));
+    } catch (e) {
+      console.error("データの保存に失敗しました。", e);
+    }
+  }, [todos]);
 
   return (
     <main style={{ maxWidth: 560, margin: "40px auto", padding: 16 }}>
