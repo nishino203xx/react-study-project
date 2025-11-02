@@ -5,6 +5,10 @@ function App() {
   const [text, setText] = useState("");
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+
+    const title = text.trim();
+    if (!title) return;
+    setText("");
   };
 
   return (
