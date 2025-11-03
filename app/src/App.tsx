@@ -125,7 +125,7 @@ function App() {
           </li>
         ))}
       </ul>
-      <div>
+      <div style={{ display: "flex", gap: 8, marginTop: 12 }}>
         {(["all", "active", "done"] as const).map((f) => (
           <button
             type="button"
