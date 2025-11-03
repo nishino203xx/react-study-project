@@ -51,6 +51,16 @@ function App() {
     setTodos((prev) => prev.filter((t) => t.id !== id));
   };
 
+  type Filter = "all" | "active" | "done";
+
+  const [filter, setFilter] = useState<Filter>("all");
+
+  const visibleTodos = todos.filter((t) => {
+    if (filter === "active") return !t.done;
+    if (filter === "done") return t.done;
+    return true;
+  });
+
   useEffect(() => {
     try {
       localStorage.setItem(STORAGE_KEY, JSON.stringify(todos));
@@ -81,7 +91,7 @@ function App() {
         {todos.length === 0 && (
           <li style={{ color: "#666" }}>まだ何もありません。</li>
         )}
-        {todos.map((t) => (
+        {visibleTodos.map((t) => (
           <li
             key={t.id}
             style={{
@@ -115,6 +125,23 @@ function App() {
           </li>
         ))}
       </ul>
+      <div>
+        {(["all", "active", "done"] as const).map((f) => (
+          <button
+            type="button"
+            onClick={() => setFilter(f)}
+            style={{
+              padding: "4px 10px",
+              border: "1px solid #ddd",
+              borderRadius: 6,
+              fontWeight: filter === f ? "bold" : "normal",
+              textDecoration: filter === f ? "underline" : "none",
+            }}
+          >
+            {f === "all" ? "All" : f === "active" ? "Active" : "Done"}
+          </button>
+        ))}
+      </div>
     </main>
   );
 }
