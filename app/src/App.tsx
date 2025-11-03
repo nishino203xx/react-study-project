@@ -8,6 +8,7 @@ type Todo = {
 };
 
 const STORAGE_KEY = "react-todo.todos.v1";
+const FILTER_KEY = "react-todo.filter.v1";
 
 function App() {
   const [text, setText] = useState("");
@@ -53,7 +54,13 @@ function App() {
 
   type Filter = "all" | "active" | "done";
 
-  const [filter, setFilter] = useState<Filter>("all");
+  const [filter, setFilter] = useState<Filter>(() => {
+    const saved = localStorage.getItem(FILTER_KEY);
+    if (saved === "all" || saved === "active" || saved === "done") {
+      return saved;
+    }
+    return "all";
+  });
 
   const visibleTodos = todos.filter((t) => {
     if (filter === "active") return !t.done;
@@ -68,6 +75,10 @@ function App() {
       console.error("データの保存に失敗しました。", e);
     }
   }, [todos]);
+
+  useEffect(() => {
+    localStorage.setItem(FILTER_KEY, filter);
+  }, [filter]);
 
   return (
     <main style={{ maxWidth: 560, margin: "40px auto", padding: 16 }}>
