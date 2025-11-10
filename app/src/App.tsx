@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useTodos } from "./hooks/useTodos";
 import TodoInput from "./components/TodoInput";
 import TodoList from "./components/TodoList";
@@ -6,9 +6,12 @@ import FilterTabs, { type Filter } from "./components/FilterTabs";
 import "./App.css";
 
 const FILTER_KEY = "react-todo.filter.v1";
+type SortOrder = "newest" | "oldest";
 
 function App() {
   const { todos, add, toggle, remove } = useTodos();
+
+  const [sortOrder, setSortOrder] = useState<SortOrder>("newest");
 
   const [filter, setFilter] = useState<Filter>(() => {
     const saved = localStorage.getItem(FILTER_KEY);
@@ -18,11 +21,21 @@ function App() {
     return "all";
   });
 
-  const visibleTodos = todos.filter((t) => {
-    if (filter === "active") return !t.done;
-    if (filter === "done") return t.done;
-    return true;
-  });
+  const visibleTodos = useMemo(() => {
+    const filtered = todos.filter((t) => {
+      if (filter === "active") return !t.done;
+      if (filter === "done") return t.done;
+      return true;
+    });
+
+    const sorted = [...filtered].sort((a, b) => {
+      const aTime = new Date(a.createdAt).getTime();
+      const bTime = new Date(b.createdAt).getTime();
+      return sortOrder === "newest" ? bTime - aTime : aTime - bTime;
+    });
+
+    return sorted;
+  }, [todos, filter, sortOrder]);
 
   useEffect(() => {
     localStorage.setItem(FILTER_KEY, filter);
@@ -32,6 +45,16 @@ function App() {
     <main style={{ maxWidth: 560, margin: "40px auto", padding: 16 }}>
       <h1>ToDo</h1>
       <TodoInput onAdd={add} />
+      <label>
+        並び順
+        <select
+          value={sortOrder}
+          onChange={(e) => setSortOrder(e.target.value as SortOrder)}
+        >
+          <option value="newest">新しい順</option>
+          <option value="oldest">古い順</option>
+        </select>
+      </label>
       <FilterTabs filter={filter} onChange={setFilter} />
       <TodoList todos={visibleTodos} onToggle={toggle} onRemove={remove} />
     </main>

@@ -33,6 +33,7 @@ export function useTodos() {
       id: crypto.randomUUID(),
       title: t,
       done: false,
+      createdAt: new Date().toISOString(),
     };
 
     setTodos((prev) => [...prev, newTodo]);
