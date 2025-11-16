@@ -42,10 +42,7 @@ function App() {
   }, [filter]);
 
   return (
-    <main
-      className="app-root"
-      style={{ maxWidth: 560, margin: "40px auto", padding: 16 }}
-    >
+    <main className="app-root">
       <h1>ToDo</h1>
       <TodoInput onAdd={add} />
       <label>

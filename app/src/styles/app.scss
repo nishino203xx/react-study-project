@@ -1,3 +1,31 @@
+// -----------
+// カラー変数
+// -----------
+$color-bg: #f1f5f9;
+$color-surface: #ffffff;
+$color-border: #e2e8f0;
+$color-text: #0f172a;
+$color-muted: #64748b;
+$color-primary: #0ea5e9;
+$shadow-card: 0 10px 30px rgba(15, 23, 42, 0.1);
+
+// -----------
+// 余白スケール
+// -----------
+$space-1: 0.25rem;
+$space-2: 0.5rem;
+$space-3: 0.75rem;
+$space-4: 1rem;
+$space-6: 1.5rem;
+$space-8: 2rem;
+
+// -----------
+// ブレークポイント（SP→PCの切り替え）
+// -----------
+$bp-sm: 480px;
+$bp-md: 768px;
+$bp-lg: 1024px;
+
 $base-font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI",
   "Helvetica Neue", Arial, "Noto Sans JP", sans-serif;
 
@@ -12,15 +40,21 @@ body {
   padding: 0;
   font-family: $base-font-family;
   line-height: 1.6;
-  background-color: #f1f9f1;
-  color: #0f172a;
+  background-color: $color-bg;
+  color: $color-text;
 }
 
 .app-root {
   max-width: 640px;
-  margin: 40px auto;
-  padding: 24px;
+  margin: $space-6 auto;
+  padding: $space-6;
   background-color: #ffffff;
-  border-radius: 16px;
-  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.1);
+  border-radius: 1rem;
+  box-shadow: $shadow-card;
+
+  // PCサイズ（768px以上）で余白を広げる
+  @media (min-width: $bp-md) {
+    padding: $space-8;
+    margin: $space-8 auto;
+  }
 }
