@@ -1,0 +1,44 @@
+@use "../../styles/variables" as v;
+
+.form {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: v.$space-2;
+  margin-top: v.$space-4;
+
+  @media (min-width: v.$bp-sm) {
+    grid-template-columns: 1fr auto;
+  }
+}
+
+.input {
+  padding: v.$space-2 v.$space-3;
+  border: 1px solid v.$color-border;
+  border-radius: 0.5rem;
+  font-size: 0.95rem;
+
+  &:focus-visible {
+    outline: 2px solid v.$color-primary;
+    outline-offset: 2px;
+  }
+}
+
+.button {
+  padding: v.$space-2 v.$space-4;
+  border-radius: 0.5rem;
+  border: 1px solid transparent;
+  background-color: v.$color-primary;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+
+  &:hover {
+    filter: brightness(0.96);
+  }
+
+  &:focus {
+    outline: 2px solid v.$color-primary;
+    outline-offset: 2px;
+  }
+}
