@@ -1,0 +1,33 @@
+@use "../../styles/variables" as v;
+
+.root {
+  display: flex;
+  gap: v.$space-3;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.links {
+  display: flex;
+  gap: v.$space-2;
+}
+
+.active {
+  padding: 4px 10px;
+  border-radius: 9999px;
+  text-decoration: none;
+  font-size: 14px;
+  border: 1px solid #0ea5e9;
+  color: #0ea5e9;
+  background-color: rgba(14, 165, 233, 0.08);
+}
+
+.inactive {
+  padding: 4px 10px;
+  border-radius: 9999px;
+  text-decoration: none;
+  font-size: 14px;
+  border: 1px solid transparent;
+  color: #64748b;
+  background-color: transparent;
+}
