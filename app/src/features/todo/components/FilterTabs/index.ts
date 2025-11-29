@@ -1,2 +1,2 @@
-export { default } from "./FilterTabs";
-export type { Filter } from "./FilterTabs";
+export { default } from "./FilterTabs"
+export type { Filter } from "./FilterTabs"

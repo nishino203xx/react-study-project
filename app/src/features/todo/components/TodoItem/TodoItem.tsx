@@ -1,10 +1,10 @@
-import type { Todo } from "../../../../types";
+import type { Todo } from "../../../../types"
 
 type Props = {
-  todo: Todo;
-  onToggle: (id: string) => void;
-  onRemove: (id: string) => void;
-};
+  todo: Todo
+  onToggle: (id: string) => void
+  onRemove: (id: string) => void
+}
 
 export default function TodoItem({ todo, onToggle, onRemove }: Props) {
   return (
@@ -32,11 +32,11 @@ export default function TodoItem({ todo, onToggle, onRemove }: Props) {
       </span>
       <button
         onClick={() => {
-          if (confirm(`「${todo.title}」を削除しますか？`)) onRemove(todo.id);
+          if (confirm(`「${todo.title}」を削除しますか？`)) onRemove(todo.id)
         }}
       >
         削除
       </button>
     </li>
-  );
+  )
 }

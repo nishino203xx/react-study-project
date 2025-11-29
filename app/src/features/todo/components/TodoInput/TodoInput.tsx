@@ -1,18 +1,18 @@
-import { useState } from "react";
-import styles from "./TodoInput.module.scss";
+import { useState } from "react"
+import styles from "./TodoInput.module.scss"
 
 type Props = {
-  onAdd: (title: string) => void;
-};
+  onAdd: (title: string) => void
+}
 
 export default function TodoInput({ onAdd }: Props) {
-  const [text, setText] = useState("");
+  const [text, setText] = useState("")
 
   const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    onAdd(text);
-    setText("");
-  };
+    e.preventDefault()
+    onAdd(text)
+    setText("")
+  }
 
   return (
     <form onSubmit={handleSubmit} className={styles.form}>
@@ -27,5 +27,5 @@ export default function TodoInput({ onAdd }: Props) {
         追加
       </button>
     </form>
-  );
+  )
 }
