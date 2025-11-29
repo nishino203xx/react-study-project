@@ -1,9 +1,9 @@
 import "./App.css";
 import { Route, Routes } from "react-router";
 import HomePage from "./pages/HomePage";
-import TodoPage from "./pages/TodoPage";
+import TodoPage from "./features/todo/pages/TodoPage";
 import SettingsPage from "./pages/SettingsPage";
-import NavBar from "./components/NavBar";
+import NavBar from "./components/layout/NavBar";
 
 function App() {
   return (

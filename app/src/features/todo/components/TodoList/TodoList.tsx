@@ -1,5 +1,5 @@
-import type { Todo } from "../types";
-import TodoItem from "./TodoItem";
+import type { Todo } from "../../../../types";
+import TodoItem from "../TodoItem";
 
 type Props = {
   todos: Todo[];

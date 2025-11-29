@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import type { Todo } from "../types";
+import type { Todo } from "../../../types";
 
 const STORAGE_KEY = "react-todo.todos.v1";
 

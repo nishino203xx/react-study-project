@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { useTodos } from "../hooks/useTodos";
-import TodoInput from "../components/TodoInput/TodoInput";
+import TodoInput from "../components/TodoInput";
 import TodoList from "../components/TodoList";
 import FilterTabs, { type Filter } from "../components/FilterTabs";
 
