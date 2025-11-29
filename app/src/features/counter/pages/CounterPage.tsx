@@ -1,10 +1,10 @@
-import { useState } from "react";
+import { useState } from "react"
 
 const Counter = () => {
-  const [count, setCount] = useState(0);
-  const increment = () => setCount((count) => count + 1);
-  const decrement = () => setCount((count) => count - 1);
-  const reset = () => setCount(0);
+  const [count, setCount] = useState(0)
+  const increment = () => setCount((count) => count + 1)
+  const decrement = () => setCount((count) => count - 1)
+  const reset = () => setCount(0)
   return (
     <>
       <div>{count}</div>
@@ -14,8 +14,8 @@ const Counter = () => {
       <button>自動カウント開始</button>
       <div>ステータス：停止中</div>
     </>
-  );
-};
+  )
+}
 
 export default function CounterPage() {
   return (
@@ -25,5 +25,5 @@ export default function CounterPage() {
       現在のカウント
       <Counter />
     </>
-  );
+  )
 }
