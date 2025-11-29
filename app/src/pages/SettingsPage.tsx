@@ -4,5 +4,5 @@ export default function SettingsPage() {
       <h1>設定</h1>
       <p>アプリ全体の設定</p>
     </>
-  );
+  )
 }

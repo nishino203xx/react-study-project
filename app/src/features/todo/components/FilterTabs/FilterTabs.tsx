@@ -1,9 +1,9 @@
-export type Filter = "all" | "active" | "done";
+export type Filter = "all" | "active" | "done"
 
 type Props = {
-  filter: Filter;
-  onChange: (next: Filter) => void;
-};
+  filter: Filter
+  onChange: (next: Filter) => void
+}
 
 export default function FilterTabs({ filter, onChange }: Props) {
   return (
@@ -25,5 +25,5 @@ export default function FilterTabs({ filter, onChange }: Props) {
         </button>
       ))}
     </div>
-  );
+  )
 }

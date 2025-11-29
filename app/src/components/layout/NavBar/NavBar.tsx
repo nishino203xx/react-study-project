@@ -1,11 +1,11 @@
-import { type ReactNode } from "react";
-import { NavLink } from "react-router";
-import styles from "./NavBar.module.scss";
+import { type ReactNode } from "react"
+import { NavLink } from "react-router"
+import styles from "./NavBar.module.scss"
 
 type NavItemProps = {
-  to: string;
-  children: ReactNode;
-};
+  to: string
+  children: ReactNode
+}
 
 function NavItem({ to, children }: NavItemProps) {
   return (
@@ -15,7 +15,7 @@ function NavItem({ to, children }: NavItemProps) {
     >
       {children}
     </NavLink>
-  );
+  )
 }
 
 export default function NavBar() {
@@ -32,5 +32,5 @@ export default function NavBar() {
         </div>
       </nav>
     </header>
-  );
+  )
 }

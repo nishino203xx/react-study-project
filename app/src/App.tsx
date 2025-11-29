@@ -1,10 +1,10 @@
-import "./App.css";
-import { Route, Routes } from "react-router";
-import HomePage from "./pages/HomePage";
-import TodoPage from "./features/todo/pages/TodoPage";
-import CounterPage from "./features/counter/pages/CounterPage";
-import SettingsPage from "./pages/SettingsPage";
-import NavBar from "./components/layout/NavBar";
+import "./App.css"
+import { Route, Routes } from "react-router"
+import HomePage from "./pages/HomePage"
+import TodoPage from "./features/todo/pages/TodoPage"
+import CounterPage from "./features/counter/pages/CounterPage"
+import SettingsPage from "./pages/SettingsPage"
+import NavBar from "./components/layout/NavBar"
 
 function App() {
   return (
@@ -22,7 +22,7 @@ function App() {
         </Routes>
       </section>
     </main>
-  );
+  )
 }
 
-export default App;
+export default App

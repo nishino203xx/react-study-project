@@ -1,11 +1,11 @@
-import type { Todo } from "../../../../types";
-import TodoItem from "../TodoItem";
+import type { Todo } from "../../../../types"
+import TodoItem from "../TodoItem"
 
 type Props = {
-  todos: Todo[];
-  onToggle: (id: string) => void;
-  onRemove: (id: string) => void;
-};
+  todos: Todo[]
+  onToggle: (id: string) => void
+  onRemove: (id: string) => void
+}
 
 export default function TodoList({ todos, onToggle, onRemove }: Props) {
   return (
@@ -17,5 +17,5 @@ export default function TodoList({ todos, onToggle, onRemove }: Props) {
         <TodoItem key={t.id} todo={t} onToggle={onToggle} onRemove={onRemove} />
       ))}
     </ul>
-  );
+  )
 }
