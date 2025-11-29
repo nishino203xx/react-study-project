@@ -27,6 +27,7 @@ export default function NavBar() {
         <div className={styles.links}>
           <NavItem to={"/"}>ホーム</NavItem>
           <NavItem to={"/todos"}>ToDo</NavItem>
+          <NavItem to={"/counter"}>Counter</NavItem>
           <NavItem to={"/settings"}>設定</NavItem>
         </div>
       </nav>
