@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import style from "../styles/CounterPage.module.scss"
 
 const Counter = () => {
   const [count, setCount] = useState(0)
@@ -13,11 +14,21 @@ const Counter = () => {
   }, [autoCount])
   return (
     <>
-      現在のカウント
-      <div>{count}</div>
-      <button onClick={increment}>+1</button>
-      <button onClick={decrement}>-1</button>
-      <button onClick={reset}>リセット</button>
+      <div>
+        <p className={style.counterLabel}>現在のカウント</p>
+        <div className={style.countCard}>{count}</div>
+      </div>
+      <div className={style.counterControls}>
+        <button className={style.counterControls__button} onClick={increment}>
+          +1
+        </button>
+        <button className={style.counterControls__button} onClick={decrement}>
+          -1
+        </button>
+        <button className={style.counterControls__button} onClick={reset}>
+          リセット
+        </button>
+      </div>
       <AutoCounter
         autoCount={autoCount}
         toggle={() => setAutoCount((autoCount) => !autoCount)}
@@ -34,7 +45,14 @@ const AutoCounter = ({
   toggle: () => void
 }) => {
   return (
-    <button onClick={toggle}>自動カウント{autoCount ? "停止" : "開始"}</button>
+    <button
+      className={`${style.autoCounter} ${
+        autoCount ? style["autoCounter--stop"] : ""
+      }`}
+      onClick={toggle}
+    >
+      自動カウント{autoCount ? "停止" : "開始"}
+    </button>
   )
 }
 
@@ -42,7 +60,7 @@ export default function CounterPage() {
   return (
     <>
       <h1>Auto Counter</h1>
-      <div>ボタン操作と自動カウント機能で数値を増減できる機能。</div>
+      <p>ボタン操作と自動カウント機能で数値を増減できる機能。</p>
       <Counter />
     </>
   )
