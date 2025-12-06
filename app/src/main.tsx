@@ -7,7 +7,7 @@ import { BrowserRouter } from "react-router"
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <BrowserRouter>
+    <BrowserRouter basename="/react-study-project">
       <App />
     </BrowserRouter>
   </StrictMode>
